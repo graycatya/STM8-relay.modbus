@@ -1,0 +1,457 @@
+
+Map of Debug\8通道.sm8 from link file Debug\8通道.lkf - Sat May 12 14:46:29 2018
+
+
+                               --------
+                               Segments
+                               --------
+
+start 00008080 end 00008280 length   512 segment .const
+start 0000828e end 00009117 length  3721 segment .text
+start 00004000 end 00004000 length     0 segment .eeprom
+start 00000000 end 00000006 length     6 segment .bsct, initialized
+start 00008288 end 0000828e length     6 segment .bsct, from
+start 00000006 end 00000078 length   114 segment .ubsct
+start 00000078 end 00000078 length     0 segment .bit
+start 00000078 end 00000078 length     0 segment .share
+start 00000100 end 00000100 length     0 segment .data
+start 00000100 end 00000100 length     0 segment .bss
+start 00000000 end 00001f69 length  8041 segment .debug
+start 00008000 end 00008080 length   128 segment .const
+start 00008280 end 00008288 length     8 segment .init
+
+
+                               -------
+                               Modules
+                               -------
+
+C:\Program Files (x86)\COSMIC\CXSTM8\Lib\crtsi0.sm8:
+start 0000828e end 000082d9 length    75 section .text
+start 00000100 end 00000100 length     0 section .bss
+start 00000006 end 00000006 length     0 section .ubsct
+
+Debug\crc16.o:
+start 000082d9 end 0000831b length    66 section .text
+start 00000000 end 0000019d length   413 section .debug
+start 00008080 end 00008280 length   512 section .const
+
+Debug\irq.o:
+start 0000831b end 0000834d length    50 section .text
+start 0000019d end 00000295 length   248 section .debug
+
+Debug\main.o:
+start 0000834d end 0000839a length    77 section .text
+start 00000295 end 000003e3 length   334 section .debug
+
+Debug\modbus.o:
+start 0000839a end 00008491 length   247 section .text
+start 00000006 end 0000006e length   104 section .ubsct
+start 000003e3 end 000007c0 length   989 section .debug
+
+Debug\modbussite.o:
+start 00008491 end 00008591 length   256 section .text
+start 00000000 end 00000002 length     2 section .bsct
+start 000007c0 end 00000ad1 length   785 section .debug
+
+Debug\optocoupler.o:
+start 00008591 end 000086cb length   314 section .text
+start 00000002 end 00000004 length     2 section .bsct
+start 00000ad1 end 00000df6 length   805 section .debug
+
+Debug\relay.o:
+start 000086cb end 000088eb length   544 section .text
+start 00000df6 end 0000106b length   629 section .debug
+
+Debug\run.o:
+start 000088eb end 00008eec length  1537 section .text
+start 00000004 end 00000006 length     2 section .bsct
+start 0000106b end 00001b39 length  2766 section .debug
+
+Debug\uart.o:
+start 00008eec end 00008fc4 length   216 section .text
+start 00001b39 end 00001dfe length   709 section .debug
+
+(C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)lreg.o:
+start 0000006e end 00000072 length     4 section .ubsct
+
+(C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)ltor.o:
+start 00008fc4 end 00008fd6 length    18 section .text
+
+(C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)ludiv.o:
+start 00008fd6 end 00008fea length    20 section .text
+
+(C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)ldiv.o:
+start 00008fea end 000090d5 length   235 section .text
+
+(C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)lgneg.o:
+start 000090d5 end 000090e8 length    19 section .text
+
+(C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)lneg.o:
+start 000090e8 end 000090fd length    21 section .text
+
+(C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)rtol.o:
+start 000090fd end 0000910f length    18 section .text
+
+(C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)utolx.o:
+start 0000910f end 00009116 length     7 section .text
+
+(C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)xreg.o:
+start 00000072 end 00000075 length     3 section .ubsct
+
+(C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)yreg.o:
+start 00000075 end 00000078 length     3 section .ubsct
+
+Debug\stm8_interrupt_vector.o:
+start 00009116 end 00009117 length     1 section .text
+start 00001dfe end 00001f69 length   363 section .debug
+start 00008000 end 00008080 length   128 section .const
+
+
+                             -----------
+                             Stack usage
+                             -----------
+
+Debug\crc16.o:
+_crc16_modbus                9   (9)
+
+Debug\irq.o:
+f_IRQ_UART23_RX         >    7   (7)
+
+Debug\main.o:
+_delayms                >    8   (8)
+_main                   >   53   (3)
+
+Debug\modbus.o:
+_Functional_analysis        45   (4)
+_Modbus_Analyze             50   (5)
+_Modbus_Crc                 19   (10)
+_Returns_error          >    8   (8)
+
+Debug\modbussite.o:
+_Delay_0                     2   (2)
+_Init_AddrGpio               5   (5)
+_Init_ModbusAddr             7   (2)
+_Read_Addr                   3   (3)
+_Read_modbussite        >    6   (3)
+
+Debug\optocoupler.o:
+_Delay                       2   (2)
+_Init_Optocoupler            7   (2)
+_Init_OptocouplerGpio        5   (5)
+_Read_Optocoupler            3   (3)
+_Read_Optocouplerdeliy  >    6   (3)
+
+Debug\relay.o:
+_Init_Relay                  7   (2)
+_Init_Relay_Gpio             5   (5)
+_Read_Relay                  3   (3)
+_Write_Relay                 3   (3)
+
+Debug\run.o:
+_AsingleCoil_map             2   (2)
+_Delays                      2   (2)
+_Init                       32   (2)
+_More_Pincount              16   (13)
+_ReadCoil_input             14   (11)
+_ReadCoils                  32   (18)
+_ReadInputRegister          29   (20)
+_Register_function           8   (2)
+_Register_input              6   (6)
+_Register_state              8   (8)
+_WrAsingleCoil              27   (18)
+_WriteAsingleRegister       25   (16)
+_WriteMultipleCoil          41   (25)
+_init_Register               4   (4)
+
+Debug\stm8_interrupt_vector.o:
+f_NonHandledInterrupt   >    5   (5)
+
+Debug\uart.o:
+_Init_Uart2_Gpio             2   (2)
+_Init_Usart                 30   (16)
+_UART2_SendData8             3   (3)
+_Usart_Send_Bytes            5   (5)
+_Usart_Send_String      >    4   (4)
+
+Stack size: 60
+
+
+                              ---------
+                              Call tree
+                              ---------
+   1 > _Read_Optocouplerdeliy: (3)
+   2      + _Delay: (2)
+   3      + _Read_Optocoupler: (3)
+       
+   4 > _Read_modbussite: (3)
+   5      + _Delay_0: (2)
+   6      + _Read_Addr: (3)
+       
+   7 > _Returns_error: (8)
+
+   8 > _Usart_Send_String: (4)
+
+   9 > __stext: (0)
+
+  10 > _delayms: (8)
+
+  11 > _main: (3)
+  12      + _Init: (2)
+  13      |    + _Init_ModbusAddr: (2)
+  14      |    |    + _Init_AddrGpio: (5)
+          |    | 
+  15      |    + _Init_Optocoupler: (2)
+  16      |    |    + _Init_OptocouplerGpio: (5)
+          |    | 
+  17      |    + _Init_Relay: (2)
+  18      |    |    + _Init_Relay_Gpio: (5)
+          |    | 
+  19      |    + _Init_Usart: (16)
+  20      |    |    + _Init_Uart2_Gpio: (2)
+          |    | 
+  21      |    + _init_Register: (4)
+          | 
+  22      + _Modbus_Analyze: (5)
+  23      |    + _Functional_analysis: (4)
+  24      |    |    + _ReadCoils: (18)
+  25      |    |    |    + _ReadCoil_input: (11)
+  26      |    |    |    |    + _Read_Optocoupler --> 3
+  27      |    |    |    |    + _Read_Relay: (3)
+          |    |    |    | 
+  28      |    |    |    + _Usart_Send_Bytes: (5)
+  29      |    |    |    + _crc16_modbus: (9)
+          |    |    | 
+  30      |    |    + _ReadInputRegister: (20)
+  31      |    |    |    + _Register_input: (6)
+  32      |    |    |    + _Usart_Send_Bytes --> 28
+  33      |    |    |    + _crc16_modbus --> 29
+          |    |    | 
+  34      |    |    + _Register_input --> 31
+  35      |    |    + _Usart_Send_Bytes --> 28
+  36      |    |    + _WrAsingleCoil: (18)
+  37      |    |    |    + _AsingleCoil_map: (2)
+  38      |    |    |    + _Read_Relay --> 27
+  39      |    |    |    + _Usart_Send_Bytes --> 28
+  40      |    |    |    + _Write_Relay: (3)
+  41      |    |    |    + _crc16_modbus --> 29
+          |    |    | 
+  42      |    |    + _WriteAsingleRegister: (16)
+  43      |    |    |    + _Register_state: (8)
+  44      |    |    |    + _Usart_Send_Bytes --> 28
+  45      |    |    |    + _crc16_modbus --> 29
+          |    |    | 
+  46      |    |    + _WriteMultipleCoil: (25)
+  47      |    |    |    + _More_Pincount: (13)
+  48      |    |    |    |    + _Read_Relay --> 27
+  49      |    |    |    |    + _Write_Relay --> 40
+          |    |    |    | 
+  50      |    |    |    + _Usart_Send_Bytes --> 28
+  51      |    |    |    + _crc16_modbus --> 29
+          |    |    | 
+          |    | 
+  52      |    + _Modbus_Crc: (10)
+  53      |    |    + _crc16_modbus --> 29
+          |    | 
+          | 
+  54      + _Read_Addr --> 6
+  55      + _Register_function: (2)
+  56      |    + _Delays: (2)
+  57      |    + _Read_Optocoupler --> 3
+  58      |    + _Register_input --> 31
+  59      |    + _Write_Relay --> 40
+          | 
+  60      + _UART2_SendData8: (3)
+       
+  61 > f_IRQ_UART23_RX: (7)
+
+  62 > f_NonHandledInterrupt: (5)
+
+  63   _AsingleCoil_map --> 37
+
+  64   _Delay --> 2
+
+  65   _Delay_0 --> 5
+
+  66   _Delays --> 56
+
+  67   _Functional_analysis --> 23
+
+  68   _Init --> 12
+
+  69   _Init_AddrGpio --> 14
+
+  70   _Init_ModbusAddr --> 13
+
+  71   _Init_Optocoupler --> 15
+
+  72   _Init_OptocouplerGpio --> 16
+
+  73   _Init_Relay --> 17
+
+  74   _Init_Relay_Gpio --> 18
+
+  75   _Init_Uart2_Gpio --> 20
+
+  76   _Init_Usart --> 19
+
+  77   _Modbus_Analyze --> 22
+
+  78   _Modbus_Crc --> 52
+
+  79   _More_Pincount --> 47
+
+  80   _ReadCoil_input --> 25
+
+  81   _ReadCoils --> 24
+
+  82   _ReadInputRegister --> 30
+
+  83   _Read_Addr --> 6
+
+  84   _Read_Optocoupler --> 3
+
+  85   _Read_Relay --> 27
+
+  86   _Register_function --> 55
+
+  87   _Register_input --> 31
+
+  88   _Register_state --> 43
+
+  89   _UART2_SendData8 --> 60
+
+  90   _Usart_Send_Bytes --> 28
+
+  91   _WrAsingleCoil --> 36
+
+  92   _WriteAsingleRegister --> 42
+
+  93   _WriteMultipleCoil --> 46
+
+  94   _Write_Relay --> 40
+
+  95   _crc16_modbus --> 29
+
+  96   _init_Register --> 21
+
+
+
+                               -------
+                               Symbols
+                               -------
+
+_AsingleCoil_map         000089f1   defined in Debug\run.o section .text
+_Delay                   00008591   defined in Debug\optocoupler.o section .text
+_Delay_0                 00008491   defined in Debug\modbussite.o section .text
+_Delays                  000088eb   defined in Debug\run.o section .text
+_Functional_analysis     000083c9   defined in Debug\modbus.o section .text
+_Init                    000088ff   defined in Debug\run.o section .text
+                                    used in Debug\main.o
+_Init_AddrGpio           000084a5   defined in Debug\modbussite.o section .text
+_Init_ModbusAddr         000084d3   defined in Debug\modbussite.o section .text
+                                    used in Debug\run.o
+_Init_Optocoupler        000085d3   defined in Debug\optocoupler.o section .text
+                                    used in Debug\run.o
+_Init_OptocouplerGpio    000085a5   defined in Debug\optocoupler.o section .text
+_Init_Relay              00008899   defined in Debug\relay.o section .text
+                                    used in Debug\run.o
+_Init_Relay_Gpio         000086cb   defined in Debug\relay.o section .text
+_Init_Uart2_Gpio         00008eec   defined in Debug\uart.o section .text
+_Init_Usart              00008efd   defined in Debug\uart.o section .text
+                                    used in Debug\run.o
+_Modbus_Analyze          0000839a   defined in Debug\modbus.o section .text
+                                    used in Debug\main.o
+_Modbus_Crc              00008455   defined in Debug\modbus.o section .text
+_More_Pincount           00008b30   defined in Debug\run.o section .text
+_ReadCoil_input          00008c97   defined in Debug\run.o section .text
+_ReadCoils               00008bc7   defined in Debug\run.o section .text
+                                    used in Debug\modbus.o
+_ReadInputRegister       00008da9   defined in Debug\run.o section .text
+                                    used in Debug\modbus.o
+_Read_Addr               00008504   defined in Debug\modbussite.o section .text
+                                    used in Debug\main.o
+_Read_Optocoupler        00008614   defined in Debug\optocoupler.o section .text
+                                    used in Debug\run.o
+_Read_Optocouplerdeliy   000086b2   defined in Debug\optocoupler.o section .text
+_Read_Relay              000087fc   defined in Debug\relay.o section .text
+                                    used in Debug\run.o
+_Read_modbussite         00008579   defined in Debug\modbussite.o section .text
+_Register_function       00008ed5   defined in Debug\run.o section .text
+                                    used in Debug\main.o
+_Register_input          00008eb2   defined in Debug\run.o section .text
+                                    used in Debug\modbus.o
+_Register_state          00008e86   defined in Debug\run.o section .text
+_Returns_error           00008436   defined in Debug\modbus.o section .text
+_UART2_SendData8         00008f50   defined in Debug\uart.o section .text
+                                    used in Debug\main.o
+_Usart_Send_Bytes        00008f6e   defined in Debug\uart.o section .text
+                                    used in Debug\modbus.o Debug\run.o
+_Usart_Send_String       00008f9e   defined in Debug\uart.o section .text
+_WrAsingleCoil           00008923   defined in Debug\run.o section .text
+                                    used in Debug\modbus.o
+_WriteAsingleRegister    00008d0c   defined in Debug\run.o section .text
+                                    used in Debug\modbus.o
+_WriteMultipleCoil       00008a25   defined in Debug\run.o section .text
+                                    used in Debug\modbus.o
+_Write_Relay             0000870e   defined in Debug\relay.o section .text
+                                    used in Debug\run.o
+__endmem                 000005ff   defined in command file
+                                    *** not used ***
+__endzp                  00000078   defined in command file section .ubsct
+                                    used in C:\Program Files (x86)\COSMIC\CXSTM8\Lib\crtsi0.sm8
+__idesc__                00008280   defined in linker section .init
+                                    used in C:\Program Files (x86)\COSMIC\CXSTM8\Lib\crtsi0.sm8
+__memory                 00000100   defined in command file section .bss
+                                    used in C:\Program Files (x86)\COSMIC\CXSTM8\Lib\crtsi0.sm8
+__stack                  000007ff   defined in command file
+                                    used in C:\Program Files (x86)\COSMIC\CXSTM8\Lib\crtsi0.sm8
+__startmem               00000100   defined in command file section .bss
+                                    *** not used ***
+__stext                  0000828e   defined in C:\Program Files (x86)\COSMIC\CXSTM8\Lib\crtsi0.sm8 section .text
+                                    used in Debug\stm8_interrupt_vector.o
+__vectab                 00008000   defined in Debug\stm8_interrupt_vector.o section .const
+_auchCRCHi               00008080   defined in Debug\crc16.o section .const
+_auchCRCLo               00008180   defined in Debug\crc16.o section .const
+_crc16_modbus            000082d9   defined in Debug\crc16.o section .text
+                                    used in Debug\modbus.o Debug\run.o
+_delayms                 0000834d   defined in Debug\main.o section .text
+_exit                    000082d7   defined in C:\Program Files (x86)\COSMIC\CXSTM8\Lib\crtsi0.sm8 section .text
+_init_Register           00008e9a   defined in Debug\run.o section .text
+_main                    00008376   defined in Debug\main.o section .text
+                                    used in C:\Program Files (x86)\COSMIC\CXSTM8\Lib\crtsi0.sm8
+_register_block          00000006   defined in Debug\modbus.o section .ubsct
+                                    used in Debug\run.o
+_usart2_rece             00000008   defined in Debug\modbus.o section .ubsct
+                                    used in Debug\irq.o
+c_divsl                  00008fea   defined in (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)ldiv.o section .text
+                                    *** not used ***
+c_divul                  00009001   defined in (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)ldiv.o section .text
+                                    used in (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)ludiv.o
+c_lgneg                  000090d5   defined in (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)lgneg.o section .text
+                                    used in (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)ldiv.o
+c_lneg                   000090e8   defined in (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)lneg.o section .text
+                                    used in (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)ldiv.o
+c_lreg                   0000006e   defined in (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)lreg.o section .ubsct
+                                    used in Debug\uart.o
+                                            (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)ltor.o
+                                            (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)ldiv.o
+                                            (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)lneg.o
+                                            (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)rtol.o
+                                            (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)utolx.o
+c_ltor                   00008fc4   defined in (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)ltor.o section .text
+                                    used in Debug\uart.o
+c_ludv                   00008fd6   defined in (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)ludiv.o section .text
+                                    used in Debug\uart.o
+c_rtol                   000090fd   defined in (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)rtol.o section .text
+                                    used in Debug\uart.o
+c_uitolx                 0000910f   defined in (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)utolx.o section .text
+                                    used in Debug\uart.o
+c_x                      00000072   defined in (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)xreg.o section .ubsct
+                                    used in C:\Program Files (x86)\COSMIC\CXSTM8\Lib\crtsi0.sm8
+                                            (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)ldiv.o
+c_y                      00000075   defined in (C:\Program Files (x86)\COSMIC\CXSTM8\Lib\libm0.sm8)yreg.o section .ubsct
+                                    used in C:\Program Files (x86)\COSMIC\CXSTM8\Lib\crtsi0.sm8
+                                            Debug\run.o
+f_IRQ_UART23_RX          0000831b   defined in Debug\irq.o section .text
+                                    used in Debug\stm8_interrupt_vector.o
+f_NonHandledInterrupt    00009116   defined in Debug\stm8_interrupt_vector.o section .text

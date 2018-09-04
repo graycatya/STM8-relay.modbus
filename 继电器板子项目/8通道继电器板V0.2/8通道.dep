@@ -1,0 +1,35 @@
+;	STMicroelectronics dependencies file
+
+[Version]
+Keyword=ST7Project
+Number=1.3
+
+[Root.Source Files.src\crc16.c.Config.0]
+ExternDep= src\crc16.c "C:\Program Files (x86)\COSMIC\CXSTM8\Hstm8\mods0.h"  inc\system\zyxstm8.h inc\crc16.h inc\uart.h
+
+[Root.Source Files.src\irq.c.Config.0]
+ExternDep= src\irq.c "C:\Program Files (x86)\COSMIC\CXSTM8\Hstm8\mods0.h"  inc\system\zyxstm8.h inc\uart.h inc\uart_irq_conf.h
+
+[Root.Source Files.src\main.c.Config.0]
+ExternDep= src\main.c "C:\Program Files (x86)\COSMIC\CXSTM8\Hstm8\mods0.h"  inc\system\zyxstm8.h inc\modbus.h inc\run.h inc\modbussite.h inc\uart.h  inc\relay.h inc\relay_conf.h
+
+[Root.Source Files.src\modbus.c.Config.0]
+ExternDep= src\modbus.c  "C:\Program Files (x86)\COSMIC\CXSTM8\Hstm8\mods0.h" inc\system\zyxstm8.h  inc\modbus.h inc\modbus_conf.h inc\uart_irq_conf.h inc\uart.h inc\CRC16.h  "C:\Program Files (x86)\COSMIC\CXSTM8\Hstm8\string.h" inc\run.h  inc\run_conf.h
+
+[Root.Source Files.src\modbussite.c.Config.0]
+ExternDep= src\modbussite.c  "C:\Program Files (x86)\COSMIC\CXSTM8\Hstm8\mods0.h" inc\system\zyxstm8.h  inc\modbussite.h inc\modbussite_conf.h
+
+[Root.Source Files.src\optocoupler.c.Config.0]
+ExternDep= src\optocoupler.c  "C:\Program Files (x86)\COSMIC\CXSTM8\Hstm8\mods0.h" inc\system\zyxstm8.h  inc\optocoupler.h inc\optocoupler_conf.h
+
+[Root.Source Files.src\relay.c.Config.0]
+ExternDep= src\relay.c "C:\Program Files (x86)\COSMIC\CXSTM8\Hstm8\mods0.h"  inc\system\zyxstm8.h inc\relay.h inc\relay_conf.h
+
+[Root.Source Files.src\run.c.Config.0]
+ExternDep= src\run.c "C:\Program Files (x86)\COSMIC\CXSTM8\Hstm8\mods0.h"  inc\system\zyxstm8.h inc\uart.h inc\uart_irq_conf.h inc\modbus.h inc\run.h  inc\run_conf.h inc\modbus_conf.h inc\optocoupler.h inc\optocoupler_conf.h  inc\modbussite.h inc\modbussite_conf.h inc\relay.h inc\relay_conf.h  inc\crc16.h
+
+[Root.Source Files.src\uart.c.Config.0]
+ExternDep= src\uart.c "C:\Program Files (x86)\COSMIC\CXSTM8\Hstm8\mods0.h"  inc\system\zyxstm8.h inc\uart.h inc\uart_conf.h inc\relay.h inc\relay_conf.h
+
+[Root.Source Files.stm8_interrupt_vector.c.Config.0]
+ExternDep= stm8_interrupt_vector.c  "C:\Program Files (x86)\COSMIC\CXSTM8\Hstm8\mods0.h"

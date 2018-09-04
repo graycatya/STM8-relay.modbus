@@ -1,0 +1,14 @@
+;	STMicroelectronics Workspace file
+
+[Version]
+Keyword=ST7Workspace-V0.7
+
+[Project0]
+Filename=8通道.stp
+Dependencies=
+[Options]
+ActiveProject=8通道
+ActiveConfig=Debug
+AddSortedElements=1
+[.St7McuIcdConf]
+McuName=STM8S105S4

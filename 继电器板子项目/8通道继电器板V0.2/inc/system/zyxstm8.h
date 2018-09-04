@@ -1,0 +1,771 @@
+/*
+zyx-ns
+2017/3/27
+
+-----  stm8头文件  -----
+*/
+
+/*
+zyx-ns
+2017/9/19
+
+改
+typedef enum
+{
+    FALSE = 0,
+    TRUE = !FALSE
+} BOOL;
+为
+typedef enum
+{
+    false = 0,
+    true = !false
+} bool;
+*/
+
+/*
+本头文件包含的外设有
+ADC1 
+ADC2
+AWU 
+BKP 
+BEEP
+CLK
+DM
+beCAN
+FLASH 
+GPIO A-I
+I2C
+ITC
+IWDG
+RST
+SPI
+TIM 1-6
+UART 1-3
+WWDG
+*/
+
+#define STM8S105
+/*	数据类型定义。*/
+#define u8 unsigned char
+#define u16 unsigned short int
+#define u32 unsigned long int
+#define uc8 const u8
+#define uc16 const u16
+#define uc32 const u32
+#define vu8 volatile u8
+#define vu16 volatile u16
+#define vu32 volatile u32
+#define vuc8 const vu8
+#define vuc16 const vu16
+#define vuc32 const vu32
+
+
+/* 布尔型定义 */
+typedef enum
+{
+    false = 0,
+    true = !false
+} bool;
+
+
+
+/* 双字节寄存器(Double Byte) *//*
+typedef struct
+{
+	vu8 RH;	/* 高位数据寄存器 *//*
+	vu8 RL;	/* 低位数据寄存器 *//*
+} DB_TypeDef;
+*/
+
+/* GPIO引脚 */
+/****************************************************************/
+typedef struct
+{
+	vu8 ODR;	/* 输出寄存器 */
+	vu8 IDR;	/* 输入寄存器 */
+	vu8 DDR;	/* io方向寄存器 */
+	vu8 CR1;	/* 控制寄存器1 */
+	vu8 CR2;	/* 控制寄存器2 */
+} GPIO_TypeDef;
+
+
+/* ADC1(10位A/D转换器) */
+/****************************************************************/
+#if defined(STM8S105) || defined(STM8S103) || defined(STM8S903) || defined(STM8AF626x)
+typedef struct
+{
+	/*struct AdcDataBuffer_TypeDef *DB[10];	/* ADC数据缓冲寄存器*/
+	vu8 DB0RH;
+	vu8 DB0RL;
+	vu8 DB1RH;
+	vu8 DB1RL;
+	vu8 DB2RH;
+	vu8 DB2RL;
+	vu8 DB3RH;
+	vu8 DB3RL;
+	vu8 DB4RH;
+	vu8 DB4RL;
+	vu8 DB5RH;
+	vu8 DB5RL;
+	vu8 DB6RH;
+	vu8 DB6RL;
+	vu8 DB7RH;
+	vu8 DB7RL;
+	vu8 DB8RH;
+	vu8 DB8RL;
+	vu8 DB9RH;
+	vu8 DB9RL;
+	u8 RESERVED[12];
+	vu8	CSR;	/* ADC1控制/状态寄存器 */
+	vu8 CR1;	/* ADC1配置寄存器1 */
+	vu8 CR2;	/* ADC1配置寄存器2 */
+	vu8 CR3;	/* ADC1配置寄存器3 */
+	/*struct ADB_TypeDef *DR;	/* ADC1数据寄存器 */
+	vu8 DRH;
+	vu8 DRL;
+	/*struct ADB_TypeDef *TDR;	/* ADC1施密特触发器失能寄存器 */
+	vu8 TDRH;
+	vu8 TDRL;
+	//struct ADB_TypeDef *HTR;	/* ADC1上限门槛值寄存器 */
+	vu8 HTRH;
+	vu8 HTRL;
+	//struct ADB_TypeDef *LTR;	/* ADC1下限门槛值寄存器 */
+	vu8 LTRH;
+	vu8 LTRL;
+	//struct ADB_TypeDef *AWSR;	/* ADC1模拟看门狗状态寄存器 */
+	vu8 AWSRH;
+	vu8 AWSRL;
+	//struct ADB_TypeDef *AWCR;	/* ADC1模拟看门狗控制寄存器 */
+	vu8 AWCRH;
+	vu8 AWCRL;
+} ADC1_TypeDef;
+#endif
+
+
+/* ADC2 */
+/****************************************************************/
+#if defined(STM8S208) || defined(STM8S207) || defined(STM8AF52Ax) || defined(STM8AF62Ax)
+typedef struct
+{
+	vu8 CSR;	/* ADC2控制/状态寄存器 */
+	vu8 CR1;	/* ADC2控制寄存器1 */
+	vu8 CR2;	/* ADC2控制寄存器2 */
+	u8 RESERVED;
+	/*struct ADB_TypeDef *DR;		/* ADC2数据寄存器 */
+	vu8 DRH;
+	vu8 DRL;
+	/*struct ADB_TypeDef *TDR;	/* ADC2施密特触发器失能寄存器 */
+	vu8 TDRH;
+	vu8 TDRL;
+} ADC2_TypeDef;
+#endif
+
+
+/* 自动唤醒 */
+/****************************************************************/
+typedef struct 
+{
+	vu8 CSR;	/* AWU控制/状态寄存器 */
+	vu8 APR;	/* AWU异步预分频寄存器 */
+	vu8 TBR;	/* AWU时基选择寄存器 */
+} AWU_TypeDef;
+
+
+/* 蜂鸣器 */
+/****************************************************************/
+typedef struct
+{
+	vu8 CSR;	/* BEEP控制/状态寄存器*/
+} BEEP_TypeDef;
+
+
+/* 全局配置寄存器(CFG) */
+/****************************************************************/
+typedef struct
+{
+	vu8 GCR;
+} CFG_TypeDef;	/* 全局配置寄存器 */
+
+
+/* 时钟控制 */
+/****************************************************************/
+typedef struct
+{
+	vu8 ICKR;		/* 内部时钟控制寄存器 */
+	vu8 ECKR;		/* 外部时钟控制寄存器 */
+	u8 RESERVED;
+	vu8 CMSR;		/* 主时钟状态寄存器 */
+	vu8 SWR;		/* 主时钟切换寄存器 */
+	vu8 SWCR;		/* 切换控制寄存器 */
+	vu8 CKDIVR;		/* 时钟分频寄存器 */
+	vu8 PCKENR1;	/* 外设时钟门控寄存器1 */
+	vu8 CSSR;		/* 时钟安全系统寄存器*/
+	vu8 CCOR;		/* 可配置时钟输出寄存器 */
+	vu8 PCKENR2;	/* 外设时钟门控寄存器2 */
+	vu8 CANCCR;		/* CAN时钟控制寄存器 */
+	vu8 HSITRIMR;	/* 内部时钟修正寄存器 */
+	vu8 SWIMCCR;	/* SWIM时钟控制寄存器 */
+} CLK_TypeDef;
+
+
+/* 外部中断控制寄存器 */
+/****************************************************************/
+typedef struct
+{
+	vu8 CR1;	/* 外部中断控制寄存器1 */
+	vu8 CR2;	/* 外部中断控制寄存器2 */
+} EXTI_TypeDef;
+
+
+/* Flash */
+/****************************************************************/
+typedef struct
+{
+	vu8 CR1;	/* Flash控制寄存器1 */
+	vu8 CR2;	/* Flash控制寄存器2 */
+	vu8 NCR2;	/* Flash互补控制寄存器2 */
+	vu8 FPR;	/* Falsh保护寄存器 */
+	vu8 NFPR;	/* Flash互补保护寄存器 */
+	vu8 IAPSR;	/* Flash在应用编程状态寄存器 */
+	u8 RESERVED[2];	/* 保留区域 */
+	vu8 PUKR;	/* Flash程序内存解保护寄存器 */
+	u8 RESERVED0;
+	vu8 DUKR;	/* EEPROM数据解保护寄存器 */
+} FLASH_TypeDef;
+
+/* I2C(I2C总线接口) */
+/****************************************************************/
+typedef struct
+{
+	vu8 CR1;	/* I2C控制寄存器1 */
+	vu8 CR2;	/* I2C控制寄存器2 */
+	vu8 FREQR;	/* I2C频率寄存器 */
+	vu8 QARL;	/* I2C自身地址寄存器低位 */
+	vu8 QARH;	/* I2C自身地址寄存器高位 */
+	u8 RESERVED;
+	vu8 DR;		/* I2C数据寄存器 */
+	vu8 SR1;	/* I2C状态寄存器1 */
+	vu8 SR2;	/* I2C状态寄存器2 */
+	vu8 SR3;	/* I2C状态寄存器3 */
+	vu8 ITR;	/* I2C中断控制寄存器 */
+	vu8 CCRL;	/* I2C时钟控制寄存器低位 */
+	vu8 CCRH;	/* I2C时钟控制寄存器高位 */
+	vu8 TRISER;	/* I2C上升时间寄存器 */
+	vu8 PECR;	/* I2C数据包错误检测寄存器 */
+} I2C_TypeDef;
+
+
+/* 中断软件优先级寄存器(ITC) */
+/****************************************************************/
+typedef struct
+{
+	vu8 SPR[8];	/* 中断软件优先级寄存器 */
+} ITC_TypeDef;
+
+
+/* 独立看门狗 */
+/****************************************************************/
+typedef struct
+{
+	vu8 KR;		/* IWDG键寄存器 */
+	vu8 PR;		/* IWDG预分频寄存器 */
+	vu8 RLR;	/* IWDG重装载寄存器 */
+} IWDG_TypeDef;
+
+
+/* 选项字节 */
+/****************************************************************/
+typedef struct
+{
+	vu8 OPT0;
+	vu8 OPT1;
+	vu8 NOPT1;
+	vu8 OPT2;
+	vu8 NOPT2;
+	vu8 OPT3;
+	vu8 NOPT3;
+	vu8 OPT4;
+	vu8 NOPT4;
+	vu8 OPT5;
+	vu8 NOPT5;
+	u8 RESERVED[2];
+	vu8 OPT7;
+	vu8 NOPT7;
+} OPT_TypeDef;
+
+/* 复位 */
+/****************************************************************/
+typedef struct
+{
+	vu8 SR;		/* 复位状态寄存器 */
+} RST_TypeDef;
+
+
+/* SPI(串行外围接口) */
+/****************************************************************/
+typedef struct
+{
+	vu8 CR1;	/* SPI控制寄存器1 */
+	vu8 CR2;	/* SPI控制寄存器2 */
+	vu8 ICR;	/* SPI中断控制寄存器 */
+	vu8 SR;		/* SPI状态寄存器 */
+	vu8 DR;		/* SPI数据寄存器 */
+	vu8 CRCPR;	/* SPI CRC多项式寄存器 */
+	vu8 RXCRCR;	/* SPI Rx CRC寄存器 */
+	vu8 TXCRCR;	/* SPI Tx CRC寄存器 */
+} SPI_TypeDef;
+
+
+/* TIM1(定时器1) */
+/****************************************************************/
+typedef struct
+{
+	vu8 CR1;	/* TIM1控制寄存器1 */
+	vu8 CR2;	/* TIM1控制寄存器2 */
+	vu8 SMCR;	/* TIM1主模式寄存器 */
+	vu8 ETR;	/* TIM1外部触发寄存器 */
+	vu8 IER;	/* TIM1中断使能寄存器 */
+	vu8 SR1;	/* TIM1状态寄存器1 */
+	vu8 SR2;	/* TIM1状态寄存器2 */
+	vu8 EGR;	/* TIM1事件产生寄存器 */
+	vu8 CCMR1;	/* TIM1捕获/比较模式寄存器1 */
+	vu8 CCMR2;	/* TIM1捕获/比较模式寄存器2 */
+	vu8 CCMR3;	/* TIM1捕获/比较模式寄存器3 */
+	vu8 CCMR4;	/* TIM1捕获/比较模式寄存器4 */
+	vu8 CCER1;	/* TIM1捕获/比较使能寄存器1 */
+	vu8 CCER2;	/* TIM1捕获/比较使能寄存器2 */
+	vu8 CNTRH;	/* TIM1计数器高位 */
+	vu8 CNTRL;	/* TIM1计数器低位 */
+	//struct DB_TypeDef *CNT;
+	vu8 PSCRH;	/* TIM1预分频高位 */
+	vu8 PSCRL;	/* TIM1预分频低位 */
+	//struct DB_TypeDef *PSC;
+	vu8 ARRH;	/* TIM1自动重装载高位 */
+	vu8 ARRL;	/* TIM1自动重装载低位 */
+	//struct DB_TypeDef *ARR;
+	vu8 RCR;	/* TIM1重复计数寄存器 */
+	vu8 CCR1H;	/* TIM1捕获/比较1高位 */
+	vu8 CCR1L;	/* TIM1捕获/比较1低位 */
+	//struct DB_TypeDef *CCR1;
+	vu8 CCR2H;	/* TIM1捕获/比较2高位 */
+	vu8 CCR2L;	/* TIM1捕获/比较2低位 */
+	//struct DB_TypeDef *CCR2;
+	vu8 CCR3H;	/* TIM1捕获/比较3高位 */
+	vu8 CCR3L;	/* TIM1捕获/比较3低位 */
+	//struct DB_TypeDef *CCR3;
+	vu8 CCR4H;	/* TIM1捕获/比较4高位 */
+	vu8 CCR4L;	/* TIM1捕获/比较4低位 */
+	//struct DB_TypeDef *CCR4;
+	vu8 BKR;	/* TIM1刹车寄存器 */
+	vu8 DTR;	/* TIM1死区时间寄存器 */
+	vu8 OISR;	/* TIM1输出空闲状态寄存器 */
+} TIM1_TypeDef;
+
+
+/* TIM2(定时器2) */
+/****************************************************************/
+typedef struct
+{
+	vu8 CR1;
+#if defined(STM8S103)
+	u8 RESERVED[2];
+#endif
+	vu8 IER;
+	vu8 SR1;
+	vu8 SR2;
+	vu8 EGR;
+	vu8 CCMR1;
+	vu8 CCMR2;
+	vu8 CCMR3;
+	vu8 CCER1;
+	vu8 CCER2;
+	//struct DB_TypeDef *CNT;
+	vu8 CNTRH;
+	vu8 CNTRL;
+	vu8 PSCR;
+	//struct DB_TypeDef *ARR;
+	vu8 ARRH;
+	vu8 ARRL;
+	//struct DB_TypeDef *CCR1;
+	vu8 CCR1H;
+	vu8 CCR1L;
+	//struct DB_TypeDef *CCR2;
+	vu8 CCR2H;
+	vu8 CCR2L;
+	//struct DB_TypeDef *CCR3;
+	vu8 CCR3H;
+	vu8 CCR3L;
+} TIM2_TypeDef;
+
+
+/* TIM3(定时器3) */
+/****************************************************************/
+typedef struct
+{
+	vu8 CR1;
+	vu8 IER;
+	vu8 SR1;
+	vu8 SR2;
+	vu8 EGR;
+	vu8 CCMR1;
+	vu8 CCMR2;
+	vu8 CCER1;
+	//struct DB_TypeDef *CNT;
+	vu8 CNTRH;
+	vu8 CNTRL;
+	vu8 PSCR;
+	//struct DB_TypeDef *ARR;
+	vu8 ARRH;
+	vu8 ARRL;
+	//struct DB_TypeDef *CCR1;
+	vu8 CCR1H;
+	vu8 CCR1L;
+	//struct DB_TypeDef *CCR2;
+	vu8 CCR2H;
+	vu8 CCR2L;
+} TIM3_TypeDef;
+
+/* TIM4(定时器4) */
+/****************************************************************/
+typedef struct
+{
+	vu8 CR1;
+#if defined(STM8S103)
+	u8 RESERVED[2];
+#endif
+	vu8 IER;
+	vu8 SR;
+	vu8 EGR;
+	vu8 CNTR;
+	vu8 PSCR;
+	vu8 ARR;
+} TIM4_TypeDef;
+
+
+/* TIM5(定时器5) */
+/****************************************************************/
+typedef struct
+{
+	vu8 CR1;
+	vu8 CR2;
+	vu8 SMCR;
+	vu8 IER;
+	vu8 SR1;
+	vu8 SR2;
+	vu8 EGR;
+	vu8 CCMR1;
+	vu8 CCMR2;
+	vu8 CCMR3;
+	vu8 CCER1;
+	vu8 CCER2;
+	//struct DB_TypeDef *CNT;
+	vu8 CNTRH;
+	vu8 CNTRL;
+	vu8 PSCR;
+	//struct DB_TypeDef *ARR;
+	vu8 ARRH;
+	vu8 ARRL;
+	///struct DB_TypeDef *CCR1;
+	vu8 CCR1H;
+	vu8 CCR1L;
+	//struct DB_TypeDef *CCR2;
+	vu8 CCR2H;
+	vu8 CCR2L;
+	//struct DB_TypeDef *CCR3;
+	vu8 CCR3H;
+	vu8 CCR3L;
+} TIM5_TypeDef;
+
+
+/* TIM6(定时器6) */
+/****************************************************************/
+typedef struct
+{
+	vu8 CR1;
+	vu8 CR2;
+	vu8 SMCR;
+	vu8 IER;
+	vu8 SR;
+	vu8 EGR;
+	vu8 CNTR;
+	vu8 PSCR;
+	vu8 ARR;
+} TIM6_TypeDef;
+
+
+/* UART1(通用同步/异步传输发送) */
+/****************************************************************/
+typedef struct
+{
+	vu8 SR;		/* UART1状态寄存器 */
+	vu8 DR; 	/* UART1数据寄存器 */
+	vu8 BRR1;	/* UART1波特率寄存器1 */
+	vu8 BRR2;	/* UART1波特率寄存器2 */
+	vu8 CR1;	/* UART1控制寄存器1 */
+	vu8 CR2;	/* UART1控制寄存器2 */
+	vu8 CR3;	/* UART1控制寄存器3 */
+	vu8 CR4;	/* UART1控制寄存器4 */
+	vu8 CR5;	/* UART1控制寄存器5 */
+	vu8 GTR;	/* UART1保护时间寄存器 */
+	vu8 PSCR;	/* UART1预分频寄存器 */
+} UART1_TypeDef;
+
+
+/* UART2 */
+/****************************************************************/
+typedef struct
+{
+	vu8 SR;
+	vu8 DR;
+	vu8 BRR1;
+	vu8 BRR2;
+	vu8 CR1;
+	vu8 CR2;
+	vu8 CR3;
+	vu8 CR4;
+	vu8 CR5;
+	vu8 CR6;
+	vu8 GTR;
+	vu8 PSCR;
+} UART2_TypeDef;
+
+/* UART3 */
+/****************************************************************/
+typedef struct
+{
+	vu8 SR;
+	vu8 DR;
+	vu8 BRR1;
+	vu8 BRR2;
+	vu8 CR1;
+	vu8 CR2;
+	vu8 CR3;
+	vu8 CR4;
+	u8 RESERVED;
+	vu8 CR6;
+} UART3_TypeDef;
+
+
+/* 窗口看门狗 */
+/****************************************************************/
+typedef struct
+{
+	vu8 CR;	/* WWDG控制寄存器 */
+	vu8 WR;	/* WWDG窗口寄存器 */
+} WWDG_TypeDef;
+
+
+/* CAN (控制局域网) */
+/****************************************************************/
+typedef struct
+{
+	vu8 MCR;	/* CAN主控制寄存器 */
+	vu8 MSR;	/* CAN主状态寄存器 */
+	vu8 TSR;	/* CAN发送状态寄存器 */
+	vu8 TPR;	/* CAN发送优先级寄存器 */
+	vu8 RFR;	/* CAN读取队列(FIFO)寄存器 */
+	vu8 IER;	/* CAN中断使能寄存器 */
+	vu8 DGR;	/* CAN诊断寄存器 */
+	vu8 RSR;	/* CAN页选择寄存器 */
+	
+	union
+	{
+		struct
+		{
+			vu8 MCSR;
+			vu8 MIDR[4];
+			vu8 MDAR[8];
+			//struct DB_TypeDef *MTS;
+			vu8 MTSH;
+			vu8 MTSL;
+		} TxMailbox;
+		
+		struct
+		{
+			vu8 FR[16];
+		} Filter;
+		
+		struct
+		{
+			vu8 F0R[8];
+			vu8 F1R[8];
+		} Filter01;
+		
+		struct
+		{
+			vu8 F2R[8];
+			vu8 F3R[8];
+		} Filter23;
+		
+		struct
+		{
+			vu8 F4R[8];
+			vu8 F5R[8];
+		} Filter45;
+		
+		struct
+		{
+			vu8 ESR;
+			vu8 EIER;
+			vu8 TECR;
+			vu8 RECR;
+			vu8 BTR1;
+			vu8 BTR2;
+			u8 Reserved[2];
+			vu8 FMR1;
+			vu8 FMR2;
+			vu8 FCR1;
+			vu8 FCR2;
+			vu8 FCR3;
+			u8 Reserved0[3];
+		} Config;
+		
+		struct
+		{
+			vu8 MFMI;
+			vu8 MDLCR;
+			vu8 MIDR[4];
+			vu8 MDAR[8];
+			//struct DB_TypeDef *MTS;
+			vu8 MTSH;
+			vu8 MTSL;
+		} RxFIFO;
+	}Page;
+} CAN_TypeDef;
+
+
+/******************************************************************************/
+/*                         			外设基地址                                */
+/******************************************************************************/
+#define OPT_BaseAddress         0x4800
+#define GPIOA_BaseAddress       0x5000
+#define GPIOB_BaseAddress       0x5005
+#define GPIOC_BaseAddress       0x500A
+#define GPIOD_BaseAddress       0x500F
+#define GPIOE_BaseAddress       0x5014
+#define GPIOF_BaseAddress       0x5019
+#define GPIOG_BaseAddress       0x501E
+#define GPIOH_BaseAddress       0x5023
+#define GPIOI_BaseAddress       0x5028
+#define FLASH_BaseAddress       0x505A
+#define EXTI_BaseAddress        0x50A0
+#define RST_BaseAddress         0x50B3
+#define CLK_BaseAddress         0x50C0
+#define WWDG_BaseAddress        0x50D1
+#define IWDG_BaseAddress        0x50E0
+#define AWU_BaseAddress         0x50F0
+#define BEEP_BaseAddress        0x50F3
+#define SPI_BaseAddress         0x5200
+#define I2C_BaseAddress         0x5210
+#define UART1_BaseAddress       0x5230
+#define UART2_BaseAddress       0x5240
+#define UART3_BaseAddress       0x5240
+#define TIM1_BaseAddress        0x5250
+#define TIM2_BaseAddress        0x5300
+#define TIM3_BaseAddress        0x5320
+#define TIM4_BaseAddress        0x5340
+#define TIM5_BaseAddress        0x5300
+#define TIM6_BaseAddress        0x5340
+#define ADC1_BaseAddress        0x53E0
+#define ADC2_BaseAddress        0x5400
+#define CAN_BaseAddress         0x5420
+#define CFG_BaseAddress         0x7F60
+#define ITC_BaseAddress         0x7F70
+#define DM_BaseAddress          0x7F90
+
+
+#if defined(STM8S105) || defined(STM8S103) || defined(STM8S903) || defined(STM8AF626x)
+ #define ADC1 ((ADC1_TypeDef *) ADC1_BaseAddress)
+#endif
+
+#if defined(STM8S208) || defined(STM8S207) || defined (STM8AF52Ax) || defined (STM8AF62Ax)
+#define ADC2 ((ADC2_TypeDef *) ADC2_BaseAddress)
+#endif
+
+#define AWU ((AWU_TypeDef *) AWU_BaseAddress)
+
+#define BEEP ((BEEP_TypeDef *) BEEP_BaseAddress)
+
+#if defined (STM8S208) || defined (STM8AF52Ax)
+ #define CAN ((CAN_TypeDef *) CAN_BaseAddress)
+#endif /* (STM8S208) || (STM8AF52Ax) */
+
+#define CLK ((CLK_TypeDef *) CLK_BaseAddress)
+
+#define EXTI ((EXTI_TypeDef *) EXTI_BaseAddress)
+
+#define FLASH ((FLASH_TypeDef *) FLASH_BaseAddress)
+
+#define OPT ((OPT_TypeDef *) OPT_BaseAddress)
+
+#define GPIOA ((GPIO_TypeDef *) GPIOA_BaseAddress)
+
+#define GPIOB ((GPIO_TypeDef *) GPIOB_BaseAddress)
+
+#define GPIOC ((GPIO_TypeDef *) GPIOC_BaseAddress)
+
+#define GPIOD ((GPIO_TypeDef *) GPIOD_BaseAddress)
+
+#define GPIOE ((GPIO_TypeDef *) GPIOE_BaseAddress)
+
+#define GPIOF ((GPIO_TypeDef *) GPIOF_BaseAddress)
+
+#if defined(STM8S207) || defined(STM8S208) || defined(STM8S105) || defined (STM8AF52Ax) || defined (STM8AF62Ax) || defined (STM8AF626x)
+ #define GPIOG ((GPIO_TypeDef *) GPIOG_BaseAddress)
+#endif /* (STM8S208) ||(STM8S207)  || (STM8S105) || (STM8AF52Ax) || (STM8AF62Ax) || (STM8AF626x) */
+
+#if defined(STM8S207) || defined(STM8S208) || defined (STM8AF52Ax) || defined (STM8AF62Ax)
+ #define GPIOH ((GPIO_TypeDef *) GPIOH_BaseAddress)
+ #define GPIOI ((GPIO_TypeDef *) GPIOI_BaseAddress)
+#endif /* (STM8S208) ||(STM8S207) || (STM8AF62Ax) || (STM8AF52Ax) */
+
+#define RST ((RST_TypeDef *) RST_BaseAddress)
+
+#define WWDG ((WWDG_TypeDef *) WWDG_BaseAddress)
+#define IWDG ((IWDG_TypeDef *) IWDG_BaseAddress)
+
+#define SPI ((SPI_TypeDef *) SPI_BaseAddress)
+#define I2C ((I2C_TypeDef *) I2C_BaseAddress)
+
+#if defined(STM8S208) ||defined(STM8S207) ||defined(STM8S103) ||defined(STM8S903)\
+    || defined (STM8AF52Ax) || defined (STM8AF62Ax)
+ #define UART1 ((UART1_TypeDef *) UART1_BaseAddress)
+#endif /* (STM8S208) ||(STM8S207)  || (STM8S103) || (STM8S903) || (STM8AF52Ax) || (STM8AF62Ax) */
+
+#if defined (STM8S105) || defined (STM8AF626x)
+ #define UART2 ((UART2_TypeDef *) UART2_BaseAddress)
+#endif /* STM8S105 || STM8AF626x */
+
+#if defined(STM8S208) ||defined(STM8S207) || defined (STM8AF52Ax) || defined (STM8AF62Ax)
+ #define UART3 ((UART3_TypeDef *) UART3_BaseAddress)
+#endif /* (STM8S208) ||(STM8S207) || (STM8AF62Ax) || (STM8AF52Ax) */
+
+#define TIM1 ((TIM1_TypeDef *) TIM1_BaseAddress)
+
+#if defined(STM8S208) ||defined(STM8S207) ||defined(STM8S103) ||defined(STM8S105)\
+    || defined (STM8AF52Ax) || defined (STM8AF62Ax) || defined (STM8AF626x)
+ #define TIM2 ((TIM2_TypeDef *) TIM2_BaseAddress)
+#endif /* (STM8S208) ||(STM8S207)  || (STM8S103) || (STM8S105) || (STM8AF52Ax) || (STM8AF62Ax) || (STM8AF626x)*/
+
+#if defined(STM8S208) ||defined(STM8S207) ||defined(STM8S105) || defined (STM8AF52Ax)\
+    || defined (STM8AF62Ax) || defined (STM8AF626x)
+ #define TIM3 ((TIM3_TypeDef *) TIM3_BaseAddress)
+#endif /* (STM8S208) ||(STM8S207)  || (STM8S105) || (STM8AF62Ax) || (STM8AF52Ax) || (STM8AF626x)*/
+
+#if defined(STM8S208) ||defined(STM8S207) ||defined(STM8S103) ||defined(STM8S105)\
+    || defined (STM8AF52Ax) || defined (STM8AF62Ax) || defined (STM8AF626x)
+ #define TIM4 ((TIM4_TypeDef *) TIM4_BaseAddress)
+#endif /* (STM8S208) ||(STM8S207)  || (STM8S103) || (STM8S105) || (STM8AF52Ax) || (STM8AF62Ax) || (STM8AF626x)*/
+
+#ifdef STM8S903
+ #define TIM5 ((TIM5_TypeDef *) TIM5_BaseAddress)
+ #define TIM6 ((TIM6_TypeDef *) TIM6_BaseAddress)
+#endif /* STM8S903 */ 
+
+#define ITC ((ITC_TypeDef *) ITC_BaseAddress)
+
+#define CFG ((CFG_TypeDef *) CFG_BaseAddress)
+
+//#define DM ((DM_TypeDef *) DM_BaseAddress)
+
